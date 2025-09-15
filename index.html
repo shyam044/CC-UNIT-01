@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="section1" class="card">
+        <h1 class="main-heading-decoration">CC Unit-01</h1>
+        <h1 class="question-decoration">1) <u>Benefits of scalable computing over the Internet:</u></h1>
+        <ol type="i">
+            <li class="sub-heading-decoration">Elasticity and On-demand Resources:</li>
+            <ul class="sub-paragraph">
+                <li>Cloud systems automatically adds or remove resources based on the user demands</li>
+                <li>You get more resources when demand is high,<br>You get necessary resources when demand is low</li>
+            </ul>
+            <li class="sub-heading-decoration">Cost Effectiveness:</li>
+            <ul class="sub-paragraph">
+                <li>Instead of buying External Computer Hardwares or Building data centers to store the data<br>Users
+                    can simply pay the rent for stroing the data in cloud servers</li>
+                <li>If you use more,You pay more,<br>If you use less,You pay less</li>
+            </ul>
+            <li class="sub-heading-decoration">Scalability:</li>
+            <ul class="sub-paragraph">
+                <li>The ability of a computing system to handle the workloads by adjusting it's performance and costs is
+                    called Scalability</li>
+                <li>Instead of Upgrading the entire system,Cloud System allows you to add more servers to increase
+                    scalability</li>
+            </ul>
+            <li class="sub-heading-decoration">Availability & Reliability:</li>
+            <ul class="sub-paragraph">
+                <li>Cloud System stores the data at different locations around the world</li>
+                <li>If one data center fails,the data is still stafe in cloud system which makes it more reliable and
+                    highly available</li>
+            </ul>
+            <li class="sub-heading-decoration">Faster Deployment & Agility:</li>
+            <ul class="sub-paragraph">
+                <li>Cloud System allows you to load the Applications to cloud servers fastly</li>
+                <li>We can quickly create Virtual Machines and Deploy the Software without need of any Hardware.</li>
+            </ul>
+        </ol>
+    </div>
+    <button class="btn btn-primary" href="#section2">Next</button>
+    </div>
+    <div id="section2">
+        <div class="card">
+            <h1 class="main-heading-decoration">CC Unit-01</h1>
+            <h1 class="question-decoration">2)<u>Applications that can be benefit from scalable computing over the
+                    Internet:</u></h1>
+            <ol type="i">
+                <li class="sub-heading-decoration">Scientific Simulations:</li>
+                <ul class="sub-paragraph">
+                    <li>It is used in Large Simulations like Weather Forecasting and Space Research.</li>
+                    <li>This Simulations Require larget amount of Computing Power and Memory
+                    </li>
+                    <li>This help us to understand and predict the natural phenomena.</li>
+                </ul>
+                <li class="sub-heading-decoration">Analyzing DNA : </li>
+                <ul class="sub-paragraph">
+                    <li>Analyzing DNA sequences or protein structures requires huge amount of biological data.</li>
+                    <li>This is done by using parallel pipelines in cloud computing.</li>
+                    <li>This help us to develop the medicines and vaccines fastly.</li>
+                </ul>
+                <li class="sub-heading-decoration">Big Data Analytics:</li>
+                <ul class="sub-paragraph">
+                    <li>Industries like Amazon, D-Mart generate petabytes of data.</li>
+                    <li>Cloud System uses MapReduce to store and process the data.</li>
+                    <li>This help us to analyze the data from massive datasets.</li>
+                </ul>
+                <li class="sub-heading-decoration">web and Internet services :</li>
+                <ul class="sub-paragraph">
+                    <li>Platforms like Google, Youtube, Netflix have billions of users.</li>
+                    <li>This Platforms uses cloud infrastructure to handle this users.</li>
+                </ul>
+                <li class="sub-heading-decoration">Hospitals:</li>
+                <ul class="sub-paragraph">
+                    <li>Hospitals contains huge amount of patient and medical records.</li>
+                    <li>They uses cloud infrastructure to analyze the records.</li>
+                </ul>
+            </ol>
+        </div>
+        <button class="btn btn-danger" href="#section1">Prev</button>
+        <button class="btn btn-primary" onclick="display('section3')">Next</button>
+    </div>
+    <div id="section3">
+        <div class="card">
+            <h1 class="main-heading-decoration">CC Unit-01</h1>
+            <h1 class="question-decoration">3)<u>Explain how scalable computing over the internet improves fault
+                    tolerance and reliability in cloud computing</u></h1>
+            <ul type="disk">
+                <li class="sub-point">Scalable Computing in Cloud Systems distributes work-loads across many computers
+                    and virtual machines.</li>
+                <li class="sub-point">It eliminates single points of failure; i.e., if one computer or virtual machine
+                    fails, others can automatically take over.</li>
+                <ol>
+                    <li class="sub-heading-decoration">Redundancy:</li>
+                    <ul class="sub-paragraph">
+                        <li>cloud system uses multiple computers and virtual machines to store the data and
+                            applications.</li>
+                        <li>if one computer or virtual machine fails, others can automatically take over
+                        </li>
+                        <li>This makes data and Applications are always available.</li>
+                    </ul>
+                    <li class="sub-heading-decoration">Real Time Resource Monitoring : </li>
+                    <ul class="sub-paragraph">
+                        <li>Cloud System allows to monitor the resources in Real-time.</li>
+                        <li>We can reassign the workloads as needed.</li>
+                    </ul>
+                    <li class="sub-heading-decoration">System Availability :</li>
+                    <ul class="sub-paragraph">
+                        <li>A System is highly available if it has a long MTTF and short MTTR.</li>
+                        <li>MTTF stands for Mean Time to Failure <br /> MTTR stands for Mean Time to Repair</li>
+                        <p class="btn btn-info" style="font-size:30px;">
+                                                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                             <mi>System Availability</mi>
+                             <mo>=</mo>
+                            <mfrac>
+                                <mi>MTTF</mi>
+                                <mi>MTTF + MTTR</mi>
+                            </mfrac>
+                        </math>
+                        </p>
+
+                    </ul>
+                    <li class="sub-heading-decoration">Horizontal Scaling :</li>
+                    <ul class="sub-paragraph">
+                        <li>Adding more nodes to a virtual machines boosts the performance but also spread the risks.</li>
+                        <li>so failure in one node do not affect the entire system.</li>
+                        <img src="Horizontal-featured-image.webp" class="image"/>
+                    </ul>
+                </ol>
+            </ul>
+        </div>
+        <button class="btn btn-danger" href="#section1">Prev</button>
+        <button class="btn btn-primary" onclick="display('section3')">Next</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

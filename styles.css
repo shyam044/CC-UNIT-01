@@ -1,0 +1,54 @@
+.main-heading-decoration{
+    text-decoration: underline;
+    color:green;
+    text-align:center;
+    font-size:50px;
+    font-weight:bold;
+}
+.question-decoration{
+    color:magenta;
+    font-size:50px;
+    padding:40px;
+}
+.heading-decoration
+{
+    color:cyan;
+    margin-left:50px;
+    font-size:40px;
+}
+.box{
+    background-color:pink;
+    border-width:10px;
+    font-size:40px;
+}
+.centering 
+{
+    text-align:center;
+    font-size:50px;
+}
+.card
+{
+    background-color:azure;
+}
+.paragraph
+{
+    margin-left:60px;
+    font-size:20px;
+}
+.sub-heading-decoration
+{
+    color:black;
+    margin-left:60px;
+    font-size:30px;
+    text-decoration: underline;
+}
+.sub-paragraph
+{
+    margin-left:55px;
+    font-size:20px;
+}
+.sub-point 
+{
+    margin-left:75px;
+    font-size:20px;
+}
