@@ -8,250 +8,446 @@
     <!-- Bootstrap CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
-    <style>
+<style>
   /* Base Styles */
-  body {
+ /* ---------- Responsive card layout ---------- */
+body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9;
+    background: #f9f9f9;
     color: #333;
-    line-height: 1.6;
   }
 
-  h1, h2, h3 {
-    color: #0077cc;
-    margin-bottom: 10px;
-  }
-
-  .card {
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    padding: 25px;
-    margin: 20px auto;
-    max-width: 1100px;
-    transition: transform 0.2s ease;
-  }
-
-  .card:hover {
-    transform: scale(1.005);
-  }
-
-  .main-heading-decoration {
-    font-size: 32px;
-    font-weight: 700;
+  header {
+    background-color: #0077cc;
+    color: white;
+    padding: 1rem 0;
     text-align: center;
-    color: #2c3e50;
-    margin-bottom: 25px;
-    border-bottom: 2px solid #0077cc;
-    padding-bottom: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
   }
 
-  .question-decoration {
-    font-size: 24px;
-    color: #333;
-    border-left: 5px solid #0077cc;
-    padding-left: 15px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+  .container {
+    max-width: 900px;
+    margin: auto;
+    padding: 1rem;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    page-break-after: always;
   }
 
-  ul, ol {
-    padding-left: 25px;
-    margin-bottom: 20px;
-  }
-
-  li {
-    margin-bottom: 10px;
-  }
-
-  img.image {
+  img {
     display: block;
     max-width: 100%;
     height: auto;
-    margin: 20px auto;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    margin: 1rem auto;
   }
 
-  code {
-    background-color: #eef1f5;
-    padding: 2px 5px;
-    border-radius: 4px;
-    font-family: monospace;
-    font-size: 90%;
+  h2 {
+    color: #0077cc;
+    margin-top: 1.5rem;
+  }
+
+  ul {
+    margin: 0.5rem 0 1rem 1.5rem;
+    padding-left: 1.2rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow-x: auto;
+    display: block;
+  }
+
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    word-wrap: break-word;
+  }
+
+  thead {
+    background-color: #0077cc;
+    color: white;
   }
 
   @media (max-width: 768px) {
-    .card {
-      margin: 15px;
-      padding: 20px;
+    header {
+      font-size: 1.2rem;
     }
 
-    .main-heading-decoration {
-      font-size: 26px;
+    .container {
+      padding: 0.8rem;
     }
 
-    .question-decoration {
-      font-size: 20px;
+    ul {
+      margin-left: 1rem;
+      padding-left: 1rem;
     }
 
-    ul, ol {
-      padding-left: 20px;
+    li {
+      font-size: 0.95rem;
+      line-height: 1.4rem;
     }
 
-    body {
-      font-size: 16px;
+    h2 {
+      font-size: 1.2rem;
+    }
+
+    h3, h4 {
+      font-size: 1rem;
+    }
+
+    table {
+      font-size: 0.9rem;
+    }
+
+    th, td {
+      padding: 6px;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
     }
   }
 
-  /* Optional Print Styling */
   @media print {
-    body {
-      background-color: white;
-      color: black;
-    }
-
-    .card {
-      box-shadow: none;
-      page-break-inside: avoid;
-    }
-
-    img.image {
-      page-break-inside: avoid;
+    .container {
+      page-break-after: always;
     }
   }
+  /* ---------- Mobile-first responsive fixes (drop-in) ---------- */
+
+/* safe box model */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+/* Make .container and .card consistent & responsive (overrides original sizes) */
+.container, .card {
+  width: 100% !important;
+  max-width: 980px;
+  margin: 0.7rem auto !important;
+  padding: 1rem !important;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  overflow: visible;
+  word-break: break-word;
+}
+
+/* Prevent inline margins on nested divs from pushing content off-screen */
+[id^="section"] div[style*="margin-left"],
+[id^="section"] [style*="margin-left"] {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+/* Reduce massive repeated h1 sizes while preserving visual style */
+.main-heading-decoration,
+.question-decoration,
+h1.main-heading-decoration,
+h1.question-decoration,
+.card h1,
+.container h1 {
+  margin: 0.35rem 0;
+  font-weight: 700;
+  color: #0077cc;
+  line-height: 1.12;
+}
+
+/* Specific scaling for headings - large screens keep a bit bigger */
+.main-heading-decoration { font-size: 1.6rem; }
+.question-decoration     { font-size: 1.05rem; border-left: 4px solid #0077cc; padding-left: 0.8rem; }
+
+/* If inline font-size used (e.g. style="font-size: 38px"), neutralize on small screens */
+[id^="section"] [style*="font-size"] {
+  font-size: inherit !important;
+}
+
+/* Math/btn override (you used <p class="btn btn-info" style="font-size:30px">) */
+.btn.btn-info[style],
+.btn[style*="font-size"] {
+  font-size: 1rem !important;
+  padding: 0.4rem 0.6rem !important;
+  line-height: 1.1 !important;
+}
+
+/* Make images fluid and limit max width, override any inline sizing */
+img, img.image {
+  display: block !important;
+  width: 100% !important;
+  max-width: 900px;
+  height: auto !important;
+  margin: 0.9rem auto !important;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* Make tables scrollable instead of overflowing the viewport */
+.table, table {
+  display: block !important;
+  width: 100% !important;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Improve list spacing for mobile */
+ol, ul {
+  padding-left: 1.05rem !important;
+  margin: 0.4rem 0 0.9rem 0 !important;
+  line-height: 1.45;
+}
+
+/* Reduce large inline margins on nested lists (common in your HTML) */
+[style*="margin-left:5vw"], [style*="margin-left:7vw"], [style*="margin-left:10vw"] {
+  margin-left: 0 !important;
+}
+
+/* Prevent long words / code or links from breaking layout */
+code, pre, .question-decoration {
+  word-break: break-word;
+  white-space: normal;
+  hyphens: auto;
+}
+
+/* Make body text comfortable on phones */
+body {
+  font-size: 15.5px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Breakpoint: smaller devices */
+@media (max-width: 768px) {
+  .container, .card { padding: 0.9rem !important; margin: 0.6rem !important; }
+  .main-heading-decoration { font-size: 1.4rem !important; }
+  .question-decoration { font-size: 1rem !important; border-left-width: 3px; padding-left: 0.65rem !important; }
+  body { font-size: 15px; }
+  th, td { padding: 8px !important; font-size: 0.95rem !important; }
+}
+
+/* Breakpoint: very small phones */
+@media (max-width: 420px) {
+  .main-heading-decoration { font-size: 1.2rem !important; }
+  .question-decoration { font-size: 0.95rem !important; }
+  .container, .card { padding: 0.7rem !important; margin: 0.4rem !important; }
+  body { font-size: 14.2px; }
+  img { margin: 0.6rem auto !important; }
+}
+
+/* Accessibility: slightly bigger tap areas for links/buttons */
+a, button, .btn { min-height: 36px; padding: 6px 8px; }
+
+/* Final safety: ensure wide inline styles (like huge margin-left that contain px or vw) don't break layout */
+[id^="section"] [style*="margin-left"] { max-width: 100% !important; box-sizing: border-box !important; }
+
+/* If you ever want to hide decorative large duplicate H1s only on tiny screens, uncomment this:
+@media (max-width:360px){
+  .main-heading-decoration { display:block; }
+  .container > h1.main-heading-decoration + h1 { display:none !important; } 
+}
+*/
+/* Center and enlarge the page/topic heading (CC Unit-01) */
+/* Targets main-heading-decoration placed directly inside container/card sections */
+.container > .main-heading-decoration,
+.card > .main-heading-decoration {
+  text-align: center !important;
+  display: block;
+  margin: 0.25rem auto 0.6rem auto !important;
+  font-size: 2.2rem !important;     /* desktop / tablet size */
+  line-height: 1.05;
+  letter-spacing: 0.6px;
+  font-weight: 800;
+  color: #006bb3;                   /* optional: slightly darker blue */
+}
+
+/* Slightly larger for very wide screens */
+@media (min-width: 1200px) {
+  .container > .main-heading-decoration,
+  .card > .main-heading-decoration {
+    font-size: 2.6rem !important;
+  }
+}
+
+/* Make sure it scales down nicely on phones */
+@media (max-width: 768px) {
+  .container > .main-heading-decoration,
+  .card > .main-heading-decoration {
+    font-size: 1.6rem !important;
+    margin-top: 0.35rem;
+    padding-bottom: 0.25rem;
+  }
+}
+
+/* If you want the underline (the border-bottom) emphasized only for the first heading on the page,
+   uncomment and use the rule below (optional):
+.container:first-of-type > .main-heading-decoration { border-bottom: 2px solid #0077cc; padding-bottom: 0.5rem; }
+*/
 </style>
+
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <div id="section1" class="card">
-        <h1 class="main-heading-decoration">CC Unit-01</h1>
-        <h1 class="question-decoration">1) <u>Benefits of scalable computing over the Internet:</u></h1>
-        <ol type="i">
-            <li class="sub-heading-decoration">Elasticity and On-demand Resources:</li>
-            <ul class="sub-paragraph">
-                <li>Cloud systems automatically adds or remove resources based on the user demands</li>
-                <li>You get more resources when demand is high,<br>You get necessary resources when demand is low</li>
-            </ul>
-            <li class="sub-heading-decoration">Cost Effectiveness:</li>
-            <ul class="sub-paragraph">
-                <li>Instead of buying External Computer Hardwares or Building data centers to store the data<br>Users
-                    can simply pay the rent for stroing the data in cloud servers</li>
-                <li>If you use more,You pay more,<br>If you use less,You pay less</li>
-            </ul>
-            <li class="sub-heading-decoration">Scalability:</li>
-            <ul class="sub-paragraph">
-                <li>The ability of a computing system to handle the workloads by adjusting it's performance and costs is
-                    called Scalability</li>
-                <li>Instead of Upgrading the entire system,Cloud System allows you to add more servers to increase
-                    scalability</li>
-            </ul>
-            <li class="sub-heading-decoration">Availability & Reliability:</li>
-            <ul class="sub-paragraph">
-                <li>Cloud System stores the data at different locations around the world</li>
-                <li>If one data center fails,the data is still stafe in cloud system which makes it more reliable and
-                    highly available</li>
-            </ul>
-            <li class="sub-heading-decoration">Faster Deployment & Agility:</li>
-            <ul class="sub-paragraph">
-                <li>Cloud System allows you to load the Applications to cloud servers fastly</li>
-                <li>We can quickly create Virtual Machines and Deploy the Software without need of any Hardware.</li>
-            </ul>
-        </ol>
-    </div>
-    </div>
-    <div id="section2">
-        <div class="card">
-            <h1 class="main-heading-decoration">CC Unit-01</h1>
-            <h1 class="question-decoration">2)<u>Applications that can be benefit from scalable computing over the
-                    Internet:</u></h1>
-            <ol type="i">
-                <li class="sub-heading-decoration">Scientific Simulations:</li>
-                <ul class="sub-paragraph">
-                    <li>It is used in Large Simulations like Weather Forecasting and Space Research.</li>
-                    <li>This Simulations Require larget amount of Computing Power and Memory
-                    </li>
-                    <li>This help us to understand and predict the natural phenomena.</li>
-                </ul>
-                <li class="sub-heading-decoration">Analyzing DNA : </li>
-                <ul class="sub-paragraph">
-                    <li>Analyzing DNA sequences or protein structures requires huge amount of biological data.</li>
-                    <li>This is done by using parallel pipelines in cloud computing.</li>
-                    <li>This help us to develop the medicines and vaccines fastly.</li>
-                </ul>
-                <li class="sub-heading-decoration">Big Data Analytics:</li>
-                <ul class="sub-paragraph">
-                    <li>Industries like Amazon, D-Mart generate petabytes of data.</li>
-                    <li>Cloud System uses MapReduce to store and process the data.</li>
-                    <li>This help us to analyze the data from massive datasets.</li>
-                </ul>
-                <li class="sub-heading-decoration">web and Internet services :</li>
-                <ul class="sub-paragraph">
-                    <li>Platforms like Google, Youtube, Netflix have billions of users.</li>
-                    <li>This Platforms uses cloud infrastructure to handle this users.</li>
-                </ul>
-                <li class="sub-heading-decoration">Hospitals:</li>
-                <ul class="sub-paragraph">
-                    <li>Hospitals contains huge amount of patient and medical records.</li>
-                    <li>They uses cloud infrastructure to analyze the records.</li>
-                </ul>
-            </ol>
-        </div>
-    </div>
-    <div id="section3">
-        <div class="card">
-            <h1 class="main-heading-decoration">CC Unit-01</h1>
-            <h1 class="question-decoration">3)<u>Explain how scalable computing over the internet improves fault
-                    tolerance and reliability in cloud computing</u></h1>
-            <ul type="disk">
-                <li class="sub-point">Scalable Computing in Cloud Systems distributes work-loads across many computers
-                    and virtual machines.</li>
-                <li class="sub-point">It eliminates single points of failure; i.e., if one computer or virtual machine
-                    fails, others can automatically take over.</li>
-                <ol>
-                    <li class="sub-heading-decoration">Redundancy:</li>
-                    <ul class="sub-paragraph">
-                        <li>cloud system uses multiple computers and virtual machines to store the data and
-                            applications.</li>
-                        <li>if one computer or virtual machine fails, others can automatically take over
-                        </li>
-                        <li>This makes data and Applications are always available.</li>
-                    </ul>
-                    <li class="sub-heading-decoration">Real Time Resource Monitoring : </li>
-                    <ul class="sub-paragraph">
-                        <li>Cloud System allows to monitor the resources in Real-time.</li>
-                        <li>We can reassign the workloads as needed.</li>
-                    </ul>
-                    <li class="sub-heading-decoration">System Availability :</li>
-                    <ul class="sub-paragraph">
-                        <li>A System is highly available if it has a long MTTF and short MTTR.</li>
-                        <li>MTTF stands for Mean Time to Failure <br /> MTTR stands for Mean Time to Repair</li>
-                        <p class="btn btn-info" style="font-size:30px;">
-                            <math xmlns="http://www.w3.org/1998/Math/MathML">
-                                <mi>System Availability</mi>
-                                <mo>=</mo>
-                                <mfrac>
-                                    <mi>MTTF</mi>
-                                    <mi>MTTF + MTTR</mi>
-                                </mfrac>
-                            </math>
-                        </p>
+     <div id="section1" class="container">
+    <h1 class="main-heading-decoration">CC Unit-01</h1>
+    <h1 class="question-decoration">1) <u>Benefits of scalable computing over the Internet:</u></h1>
 
-                    </ul>
-                    <li class="sub-heading-decoration">Horizontal Scaling :</li>
-                    <ul class="sub-paragraph">
-                        <li>Adding more nodes to a virtual machines boosts the performance but also spread the risks.
-                        </li>
-                        <li>so failure in one node do not affect the entire system.</li>
-                        <img src="Horizontal-featured-image.webp" class="image" />
-                    </ul>
-                </ol>
-            </ul>
-        </div>
-    </div>
+    <ol type="i">
+      <li class="sub-heading-decoration">
+        Elasticity and On-demand Resources:
+        <ul class="sub-paragraph">
+          <li>Cloud systems automatically add or remove resources based on the user demands.</li>
+          <li>You get more resources when demand is high,<br>you get necessary resources when demand is low.</li>
+        </ul>
+      </li>
+
+      <li class="sub-heading-decoration">
+        Cost Effectiveness:
+        <ul class="sub-paragraph">
+          <li>Instead of buying external computer hardware or building data centers to store data,<br>users can simply pay rent for storing the data in cloud servers.</li>
+          <li>If you use more, you pay more,<br>if you use less, you pay less.</li>
+        </ul>
+      </li>
+
+      <li class="sub-heading-decoration">
+        Scalability:
+        <ul class="sub-paragraph">
+          <li>The ability of a computing system to handle workloads by adjusting its performance and costs is called scalability.</li>
+          <li>Instead of upgrading the entire system, cloud systems allow you to add more servers to increase scalability.</li>
+        </ul>
+      </li>
+
+      <li class="sub-heading-decoration">
+        Availability & Reliability:
+        <ul class="sub-paragraph">
+          <li>Cloud systems store data at different locations around the world.</li>
+          <li>If one data center fails, the data is still safe in the cloud system, which makes it more reliable and highly available.</li>
+        </ul>
+      </li>
+
+      <li class="sub-heading-decoration">
+        Faster Deployment & Agility:
+        <ul class="sub-paragraph">
+          <li>Cloud systems allow you to load applications to cloud servers quickly.</li>
+          <li>We can quickly create virtual machines and deploy the software without the need for any hardware.</li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+<div id="section2" class="container">
+  <h1 class="main-heading-decoration">CC Unit-01</h1>
+  <h1 class="question-decoration">2) <u>Applications that can benefit from scalable computing over the Internet:</u></h1>
+
+  <ol type="i">
+    <li class="sub-heading-decoration">
+      Scientific Simulations:
+      <ul class="sub-paragraph">
+        <li>It is used in large simulations like weather forecasting and space research.</li>
+        <li>This simulation requires a large amount of computing power and memory.</li>
+        <li>This helps us to understand and predict the natural phenomena.</li>
+      </ul>
+    </li>
+
+    <li class="sub-heading-decoration">
+      Analyzing DNA:
+      <ul class="sub-paragraph">
+        <li>Analyzing DNA sequences or protein structures requires huge amounts of biological data.</li>
+        <li>This is done by using parallel pipelines in cloud computing.</li>
+        <li>This helps us to develop medicines and vaccines quickly.</li>
+      </ul>
+    </li>
+
+    <li class="sub-heading-decoration">
+      Big Data Analytics:
+      <ul class="sub-paragraph">
+        <li>Industries like Amazon, D-Mart generate petabytes of data.</li>
+        <li>Cloud systems use MapReduce to store and process the data.</li>
+        <li>This helps us to analyze data from massive datasets.</li>
+      </ul>
+    </li>
+
+    <li class="sub-heading-decoration">
+      Web and Internet services:
+      <ul class="sub-paragraph">
+        <li>Platforms like Google, YouTube, Netflix have billions of users.</li>
+        <li>These platforms use cloud infrastructure to handle these users.</li>
+      </ul>
+    </li>
+
+    <li class="sub-heading-decoration">
+      Hospitals:
+      <ul class="sub-paragraph">
+        <li>Hospitals contain huge amounts of patient and medical records.</li>
+        <li>They use cloud infrastructure to analyze the records.</li>
+      </ul>
+    </li>
+  </ol>
+</div>
+
+  <div id="section3" class="container">
+  <h1 class="main-heading-decoration">CC Unit-01</h1>
+  <h1 class="question-decoration">3) <u>Explain how scalable computing over the internet improves fault tolerance and reliability in cloud computing</u></h1>
+
+  <ul type="disc">
+    <li class="sub-point">Scalable computing in cloud systems distributes workloads across many computers and virtual machines.</li>
+    <li class="sub-point">It eliminates single points of failure; i.e., if one computer or virtual machine fails, others can automatically take over.</li>
+
+    <li>
+      <ol>
+        <li class="sub-heading-decoration">Redundancy:
+          <ul class="sub-paragraph">
+            <li>Cloud system uses multiple computers and virtual machines to store the data and applications.</li>
+            <li>If one computer or virtual machine fails, others can automatically take over.</li>
+            <li>This makes data and applications always available.</li>
+          </ul>
+        </li>
+
+        <li class="sub-heading-decoration">Real Time Resource Monitoring:
+          <ul class="sub-paragraph">
+            <li>Cloud system allows monitoring the resources in real-time.</li>
+            <li>We can reassign the workloads as needed.</li>
+          </ul>
+        </li>
+
+        <li class="sub-heading-decoration">System Availability:
+          <ul class="sub-paragraph">
+            <li>A system is highly available if it has a long MTTF and short MTTR.</li>
+            <li>MTTF stands for Mean Time to Failure <br> MTTR stands for Mean Time to Repair</li>
+            <p class="btn btn-info" style="font-size:30px;">
+              <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mi>System Availability</mi>
+                <mo>=</mo>
+                <mfrac>
+                  <mi>MTTF</mi>
+                  <mi>MTTF + MTTR</mi>
+                </mfrac>
+              </math>
+            </p>
+          </ul>
+        </li>
+
+        <li class="sub-heading-decoration">Horizontal Scaling:
+          <ul class="sub-paragraph">
+            <li>Adding more nodes to virtual machines boosts performance but also spreads the risks.</li>
+            <li>So failure in one node does not affect the entire system.</li>
+            <img src="Horizontal-featured-image.webp" class="image" alt="Horizontal Scaling Illustration" />
+          </ul>
+        </li>
+      </ol>
+    </li>
+  </ul>
+</div>
+
     <div id="section4">
         <div class="card">
             <h1 class="main-heading-decoration">CC Unit-01</h1>
@@ -292,8 +488,8 @@
                     </table>
                 </div>
             </ul>
-            <h1 class="sub-heading-decoration" style="margin-left:7vw;"><u>Load Balancing Algorithm helps in two major
-                    ways</u> : </h1>
+            <h2 class="sub-heading-decoration" style="margin-left:7vw;"><u>Load Balancing Algorithm helps in two major
+                    ways</u> : </h2>
             <ol type="i" style="font-size:20px; margin-left:10vw;">
                 <li>
                     <u>Efficient Resource Utilization</u>
@@ -303,7 +499,7 @@
                 </li>
             </ol>
             <div style="margin-left:3vw;">
-                <h1 class="sub-heading-decoration"><u>Efficient Resource Utilization</u>:</h1>
+                <h2 class="sub-heading-decoration"><u>Efficient Resource Utilization</u>:</h2>
                 <ul class="sub-point" style="margin-left:5vw;">
                     <li>By distributing the workloads across multiple servers that prevets the servers from being
                         overloaded.</li>
@@ -311,14 +507,14 @@
                 </ul>
             </div>
             <div style="margin-left:3vw;">
-                <h1 class="sub-heading-decoration"><u>Handling Increased Demands</u>:</h1>
+                <h2 class="sub-heading-decoration"><u>Handling Increased Demands</u>:</h2>
                 <ul class="sub-point" style="margin-left:5vw;">
                     <li>when more people start using the website then server might crash or slow down</li>
                     <li>Load Balancer helps to prevent this by spreading the extra traffic across multiple servers</li>
                 </ul>
             </div>
             <div style="margin-left:3vw;">
-                <h1 class="sub-heading-decoration"><u>Load Blancing Improves</u>:</h1>
+                <h2 class="sub-heading-decoration"><u>Load Blancing Improves</u>:</h2>
                 <ul class="sub-point" style="margin-left:5vw;">
                     <li>Scalability</li>
                     <li>Reliability</li>
@@ -849,6 +1045,5 @@
     </script>
     <script src="script.js"></script>
 </body>
-
 
 </html>
