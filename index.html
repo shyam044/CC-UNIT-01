@@ -38,12 +38,15 @@ body {
     page-break-after: always;
   }
 
-  img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    margin: 1rem auto;
-  }
+img {
+  display: block;
+  max-width: 55%;       /* smaller width on laptop */
+  height: auto;         /* keep proportions natural */
+  max-height: 280px;    /* limit vertical height */
+  object-fit: contain;  /* ensures full image fits */
+  margin: 1rem auto;
+  border-radius: 6px;
+}
 
   h2 {
     color: #0077cc;
@@ -287,6 +290,67 @@ a, button, .btn { min-height: 36px; padding: 6px 8px; }
     padding-bottom: 0.25rem;
   }
 }
+#lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7); /* blurred/dark background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+#lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+#lightbox img {
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.3);
+  transform: scale(0.8);
+  transition: transform 0.3s ease;
+}
+
+#lightbox.active img {
+  transform: scale(1);  /* zoom in effect */
+  cursor: zoom-out;
+}
+/* Tip message styling */
+#image-tip {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 119, 204, 0.95);
+  color: #fff;
+  padding: 0.8rem 1.2rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s ease;
+}
+
+#image-tip.show {
+  opacity: 1;
+  visibility: visible;
+}
+ img:hover {
+  transform: scale(1.05);
+}
+
 
 /* If you want the underline (the border-bottom) emphasized only for the first heading on the page,
    uncomment and use the rule below (optional):
@@ -300,6 +364,7 @@ a, button, .btn { min-height: 36px; padding: 6px 8px; }
 <body>
      <div id="section1" class="container">
     <h1 class="main-heading-decoration">CC Unit-01</h1>
+    <div id="image-tip">💡 Click on any image for better visualizing!</div>
     <h1 class="question-decoration">1) <u>Benefits of scalable computing over the Internet:</u></h1>
 
     <ol type="i">
@@ -1031,6 +1096,10 @@ a, button, .btn { min-height: 36px; padding: 6px 8px; }
       </ul>
     </div>
   </div>
+  <div id="lightbox">
+  <img id="lightbox-img" src="" alt="Enlarged image">
+</div>
+
 </div>
 
 
@@ -1044,7 +1113,38 @@ a, button, .btn { min-height: 36px; padding: 6px 8px; }
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
     </script>
     <script src="script.js"></script>
+    <script>
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+
+  document.querySelectorAll("img").forEach(img => {
+    img.addEventListener("click", () => {
+      lightboxImg.src = img.src;          // set clicked image
+      lightbox.classList.add("active");   // show overlay
+    });
+  });
+
+  lightbox.addEventListener("click", () => {
+    lightbox.classList.remove("active");  // close on click anywhere
+  });
+</script>
+<script>
+  // Show "Click on image" tip only once
+  window.addEventListener("DOMContentLoaded", () => {
+    if (!localStorage.getItem("imageTipShown")) {
+      const tip = document.getElementById("image-tip");
+      tip.classList.add("show");
+
+      setTimeout(() => {
+        tip.classList.remove("show");
+        tip.style.display = "none";
+        localStorage.setItem("imageTipShown", "true"); // remember not to show again
+      }, 10000); // 10 seconds
+    }
+  });
+</script>
 </body>
 
 </html>
+
 
