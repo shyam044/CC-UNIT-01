@@ -1113,7 +1113,7 @@ a, button, .btn { min-height: 36px; padding: 6px 8px; }
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
     </script>
     <script src="script.js"></script>
-    <script>
+ <script>
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightbox-img");
 
@@ -1129,22 +1129,21 @@ a, button, .btn { min-height: 36px; padding: 6px 8px; }
   });
 </script>
 <script>
-  // Show "Click on image" tip only once
+  // Show message on each page load for 10 seconds
   window.addEventListener("DOMContentLoaded", () => {
-    if (!localStorage.getItem("imageTipShown")) {
-      const tip = document.getElementById("image-tip");
-      tip.classList.add("show");
+    const tip = document.getElementById("image-tip");
+    tip.classList.add("show"); // show message
 
-      setTimeout(() => {
-        tip.classList.remove("show");
-        tip.style.display = "none";
-        localStorage.setItem("imageTipShown", "true"); // remember not to show again
-      }, 10000); // 10 seconds
-    }
+    // Hide after 10 seconds
+    setTimeout(() => {
+      tip.classList.remove("show");
+    },5000);
   });
 </script>
+
 </body>
 
 </html>
+
 
 
